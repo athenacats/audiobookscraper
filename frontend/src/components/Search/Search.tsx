@@ -8,7 +8,8 @@ export const Search: React.FC<SearchComponentProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = () => {
-    onSearch(searchTerm);
+    const cleanedUpSearchTerm = searchTerm.replace(/\s+/g, "-");
+    onSearch(cleanedUpSearchTerm);
   };
   return (
     <div>
