@@ -17,7 +17,7 @@ const limiter = new Bottleneck({
   minTime: 5000,
 });
 
-app.get("/scrape", async (req, res) => {
+app.get("/", async (req, res) => {
   const url = "http://theaudiobookbay.cc/";
   try {
     const response = await limiter.schedule(() => axios.get(url));
