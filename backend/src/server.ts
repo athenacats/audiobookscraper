@@ -1,7 +1,8 @@
 import express from "express";
 import axios from "axios";
-import cheerio, { load } from "cheerio";
+import { load } from "cheerio";
 import cors from "cors";
+import Bottleneck from "bottleneck";
 
 const app = express();
 app.use(
@@ -10,10 +11,15 @@ app.use(
   })
 );
 
+const limiter = new Bottleneck({
+  maxConcurrent: 1,
+  minTime: 5000,
+});
+
 app.get("/scrape", async (req, res) => {
   const url = "http://theaudiobookbay.cc/";
   try {
-    const response = await axios.get(url);
+    const response = await limiter.schedule(() => axios.get(url));
     const html = response.data;
 
     const $ = load(html);
