@@ -25,10 +25,12 @@ app.get("/scrape", async (req, res) => {
 
     const $ = load(html);
     console.log($);
-    const audiobooks: { title: string }[] = [];
+    const audiobooks: { title: string; link: string | undefined }[] = [];
     $("div.postTitle h2").each((index, element) => {
-      const title = $(element).text().trim();
-      audiobooks.push({ title });
+      const titleElement = $(element);
+      const title = titleElement.text().trim();
+      const link = url + titleElement.find("a").attr("href");
+      audiobooks.push({ title, link });
     });
     res.json(audiobooks);
   } catch (error) {
