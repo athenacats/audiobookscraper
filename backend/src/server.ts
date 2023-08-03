@@ -25,12 +25,17 @@ app.get("/scrape", async (req, res) => {
 
     const $ = load(html);
     console.log($);
-    const audiobooks: { title: string; link: string | undefined }[] = [];
-    $("div.postTitle h2").each((index, element) => {
+    const audiobooks: {
+      title: string;
+      link: string;
+      img: string | undefined;
+    }[] = [];
+    $("div.post").each((index, element) => {
       const titleElement = $(element);
-      const title = titleElement.text().trim();
+      const title = titleElement.find("div.postTitle h2").text().trim();
       const link = url + titleElement.find("a").attr("href");
-      audiobooks.push({ title, link });
+      const img = titleElement.find("img").attr("src");
+      audiobooks.push({ title, link, img });
     });
     res.json(audiobooks);
   } catch (error) {
