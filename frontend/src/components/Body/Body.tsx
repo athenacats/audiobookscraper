@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 interface AudiobookList {
   title: string;
+  link: string;
+  img: string | undefined;
 }
 
 export const Body = () => {
@@ -10,12 +12,12 @@ export const Body = () => {
 
   useEffect(() => {
     axios
-      .get("/api/scrape")
+      .get("http://localhost:3000")
       .then((response) => {
         setAudiobooks(response.data);
       })
       .catch((error) => {
-        console.error("Error ftching audiobooks: ", error);
+        console.error("Error fetching audiobooks: ", error);
       });
   }, []);
   return (
