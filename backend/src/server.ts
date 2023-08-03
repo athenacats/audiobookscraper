@@ -8,6 +8,7 @@ export const app = express();
 app.use(
   cors({
     credentials: true,
+    origin: "http://localhost:5173/",
   })
 );
 
@@ -20,6 +21,7 @@ app.get("/scrape", async (req, res) => {
   const url = "http://theaudiobookbay.cc/";
   try {
     const response = await limiter.schedule(() => axios.get(url));
+    console.log(response);
     const html = response.data;
 
     const $ = load(html);
