@@ -4,7 +4,7 @@ import { load } from "cheerio";
 import cors from "cors";
 import Bottleneck from "bottleneck";
 
-const app = express();
+export const app = express();
 app.use(
   cors({
     credentials: true,
@@ -23,7 +23,7 @@ app.get("/scrape", async (req, res) => {
     const html = response.data;
 
     const $ = load(html);
-    let audiobooks: { title: string }[] = [];
+    const audiobooks: { title: string }[] = [];
     $(".product-list").each((index, element) => {
       const title = $(element).text().trim();
       audiobooks.push({ title });
