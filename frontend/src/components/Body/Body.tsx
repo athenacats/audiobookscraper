@@ -25,7 +25,10 @@ export const Body = () => {
       <h2 className="text-center">Welcome to the AudioBook Library!</h2>
       <ul>
         {audiobooks.map((audiobook, index) => (
-          <li key={index}>{audiobook.title}</li>
+          <li key={index}>
+            <img src={audiobook.img}></img>
+            <a href={audiobook.link}>{audiobook.title}</a>
+          </li>
         ))}
       </ul>
     </div>
