@@ -21,12 +21,12 @@ app.get("/scrape", async (req, res) => {
   const url = "http://theaudiobookbay.cc/";
   try {
     const response = await limiter.schedule(() => axios.get(url));
-    console.log(response);
     const html = response.data;
 
     const $ = load(html);
+    console.log($);
     const audiobooks: { title: string }[] = [];
-    $(".product-list").each((index, element) => {
+    $("div.postTitle h2").each((index, element) => {
       const title = $(element).text().trim();
       audiobooks.push({ title });
     });
