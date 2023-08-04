@@ -3,6 +3,7 @@ import Bottleneck from "bottleneck";
 import { load } from "cheerio";
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
+import { v4 as uuid } from "uuid";
 
 const router = Router();
 
@@ -34,7 +35,7 @@ router.get(
         const title = titleElement.find("div.postTitle h2").text().trim();
         const link = url + titleElement.find("a").attr("href");
         const img = titleElement.find("img").attr("src");
-        const id = titleElement.find(".postContent p").text().trim();
+        const id = uuid();
         audiobooks.push({ title, link, img, id });
       });
       res.json(audiobooks);
