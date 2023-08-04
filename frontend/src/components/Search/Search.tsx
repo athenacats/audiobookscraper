@@ -23,7 +23,9 @@ export const Search: React.FC<SearchComponentProps> = ({ onSearch }) => {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search Audiobooks"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button className="btn btn-primary" onClick={handleSearch}>
+        Search
+      </button>
     </div>
   );
 };
