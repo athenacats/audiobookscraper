@@ -1,9 +1,15 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Header.scss";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const handleTitleClick = () => {
+    navigate(`/`);
+  };
   return (
-    <div>
-      <h1> Audiobook Scraper</h1>
+    <div className="header-container">
+      <h1 onClick={handleTitleClick}> Audiobook Scraper</h1>
     </div>
   );
 };

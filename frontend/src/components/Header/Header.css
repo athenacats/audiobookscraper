@@ -1,0 +1,11 @@
+.header-container {
+  background-color: var(--header-color);
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.header-container h1 {
+  text-align: center;
+}/*# sourceMappingURL=Header.css.map */

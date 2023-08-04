@@ -27,11 +27,13 @@ export const SearchResults: React.FC = () => {
   return (
     <div>
       <h1>Search Results</h1>
-      <ul>
+      <ul className="list-group">
         {audiobooks.map((audiobook) => (
           <li key={audiobook.id}>
             <img src={audiobook.img}></img>
-            <a href={audiobook.link}>{audiobook.title}</a>
+            <h4>
+              <a href={audiobook.link}>{audiobook.title}</a>
+            </h4>
           </li>
         ))}
       </ul>
