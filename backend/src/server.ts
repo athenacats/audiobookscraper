@@ -3,6 +3,7 @@ import axios from "axios";
 import { load } from "cheerio";
 import cors from "cors";
 import Bottleneck from "bottleneck";
+import searchRouter from "./routers/search.router";
 
 export const app = express();
 app.use(
@@ -43,6 +44,8 @@ app.get("/", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+app.use("/", searchRouter);
 
 const port = 3000;
 app.listen(port, () => {
