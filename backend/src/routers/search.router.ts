@@ -27,13 +27,15 @@ router.get(
         title: string;
         link: string;
         img: string | undefined;
+        id: string;
       }[] = [];
       $("div.post").each((index, element) => {
         const titleElement = $(element);
         const title = titleElement.find("div.postTitle h2").text().trim();
         const link = url + titleElement.find("a").attr("href");
         const img = titleElement.find("img").attr("src");
-        audiobooks.push({ title, link, img });
+        const id = titleElement.find(".postContent p").text().trim();
+        audiobooks.push({ title, link, img, id });
       });
       res.json(audiobooks);
     } catch (error) {

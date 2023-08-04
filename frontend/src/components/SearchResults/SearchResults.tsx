@@ -6,6 +6,7 @@ interface AudiobookList {
   title: string;
   link: string;
   img: string | undefined;
+  id: string;
 }
 
 export const SearchResults: React.FC = () => {
@@ -28,7 +29,7 @@ export const SearchResults: React.FC = () => {
       <h1>Search Results</h1>
       <ul>
         {audiobooks.map((audiobook) => (
-          <li key={audiobook.title}>
+          <li key={audiobook.id}>
             <img src={audiobook.img}></img>
             <a href={audiobook.link}>{audiobook.title}</a>
           </li>
