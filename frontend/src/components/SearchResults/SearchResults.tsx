@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 interface AudiobookList {
   title: string;
@@ -7,11 +8,8 @@ interface AudiobookList {
   img: string | undefined;
 }
 
-interface SearchResultsProps {
-  searchTerm: string;
-}
-
-export const SearchResults: React.FC<SearchResultsProps> = ({ searchTerm }) => {
+export const SearchResults: React.FC = () => {
+  const { searchTerm } = useParams<{ searchTerm: string }>();
   const [audiobooks, setAudiobooks] = useState<AudiobookList[]>([]);
 
   useEffect(() => {
