@@ -14,9 +14,9 @@ const limiter = new Bottleneck({
 router.get(
   "/:searchTerm",
   asyncHandler(async (req, res) => {
-    const { searchTerm } = req.query;
+    const { searchTerm } = req.params;
     console.log(searchTerm);
-    const url = `http://theaudiobookbay.is/?s=${searchTerm}&cat=undefined%2Cundefined`;
+    const url = `http://audiobookbay.is/?s=${searchTerm}&cat=undefined%2Cundefined`;
     try {
       const response = await limiter.schedule(() => axios.get(url));
       const html = response.data;
