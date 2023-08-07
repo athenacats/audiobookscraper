@@ -13,6 +13,7 @@ export const Search: React.FC<SearchComponentProps> = ({ onSearch }) => {
   const handleSearch = () => {
     const cleanedUpSearchTerm = searchTerm.replace(/\s+/g, "-");
     onSearch(cleanedUpSearchTerm);
+    setSearchTerm("");
     navigate(`/${cleanedUpSearchTerm}`);
   };
 
