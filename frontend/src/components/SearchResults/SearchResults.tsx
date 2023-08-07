@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./SearchResults.scss";
 
 interface AudiobookList {
   title: string;
@@ -25,14 +26,24 @@ export const SearchResults: React.FC = () => {
   }, [searchTerm]);
 
   return (
-    <div>
-      <h1>Search Results</h1>
+    <div className="body-container">
+      <h2 className="text-center">Search Results</h2>
       <ul className="list-group">
         {audiobooks.map((audiobook) => (
           <li key={audiobook.id}>
-            <img src={audiobook.img}></img>
+            <img
+              className="img-thumbnail "
+              alt={audiobook.title}
+              src={audiobook.img}
+            ></img>
             <h4>
-              <a href={audiobook.link}>{audiobook.title}</a>
+              <a
+                className="link-underline link-underline-opacity-0 text-decoration-none"
+                href={audiobook.link}
+                target="_blank"
+              >
+                {audiobook.title}
+              </a>
             </h4>
           </li>
         ))}
