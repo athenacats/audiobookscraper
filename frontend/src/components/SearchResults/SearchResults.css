@@ -27,6 +27,7 @@
 }
 .body-container ul li h4 {
   font-size: 1rem;
+  width: 60%;
 }
 .body-container ul li:hover {
   padding: 1.5rem 0rem;
