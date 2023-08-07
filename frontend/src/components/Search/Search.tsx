@@ -16,9 +16,16 @@ export const Search: React.FC<SearchComponentProps> = ({ onSearch }) => {
     navigate(`/${cleanedUpSearchTerm}`);
   };
 
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="search-container">
       <input
+        onKeyUp={handleKeyUp}
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
