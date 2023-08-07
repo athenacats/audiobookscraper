@@ -1,0 +1,14 @@
+.search-container {
+  width: 30%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.search-container input {
+  height: 2rem;
+  width: 60%;
+}
+.search-container .btn.btn-primary {
+  background-color: #d99d29;
+  border: #d99d29;
+}/*# sourceMappingURL=Search.css.map */

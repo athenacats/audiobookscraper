@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Search.scss";
 
 interface SearchComponentProps {
   onSearch: (searchTerm: string) => void;
@@ -16,7 +17,7 @@ export const Search: React.FC<SearchComponentProps> = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className="search-container">
       <input
         type="text"
         value={searchTerm}
