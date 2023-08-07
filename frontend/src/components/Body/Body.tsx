@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import "./Body.scss";
 
 interface AudiobookList {
   title: string;
@@ -21,16 +22,23 @@ export const Body = () => {
       });
   }, []);
   return (
-    <div>
-      <h2 className="text-center">Welcome to the AudioBook Library!</h2>
+    <div className="body-container">
+      <h4 className="text-center ">
+        Welcome to the <span className="bigger">AudioBook Library!</span>
+      </h4>
       <ul className="list-group">
         {audiobooks.map((audiobook, index) => (
           <li key={index}>
-            <img src={audiobook.img}></img>
+            <img
+              className="img-thumbnail "
+              src={audiobook.img}
+              alt={audiobook.title}
+            ></img>
             <h4>
               <a
                 className="link-underline link-underline-opacity-0 text-decoration-none"
                 href={audiobook.link}
+                target="_blank"
               >
                 {audiobook.title}
               </a>
