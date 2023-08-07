@@ -33,9 +33,10 @@ router.get(
       $("div.post").each((index, element) => {
         const titleElement = $(element);
         const title = titleElement.find("div.postTitle h2").text().trim();
-        const link = url + titleElement.find("a").attr("href");
+        let link = url + titleElement.find("a").attr("href");
         const img = titleElement.find("img").attr("src");
         const id = uuid();
+        link = link.replace(/^.*?\/abss\//, "https://audiobookbay.is/abss/");
         audiobooks.push({ title, link, img, id });
       });
       res.json(audiobooks);
