@@ -47,6 +47,8 @@ var cors_1 = __importDefault(require("cors"));
 var bottleneck_1 = __importDefault(require("bottleneck"));
 var search_router_1 = __importDefault(require("./routers/search.router"));
 var path_1 = __importDefault(require("path"));
+var dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 exports.app = (0, express_1.default)();
 exports.app.use((0, cors_1.default)({
     credentials: true,
