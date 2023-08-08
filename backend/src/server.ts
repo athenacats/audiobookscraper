@@ -4,6 +4,10 @@ import { load } from "cheerio";
 import cors from "cors";
 import Bottleneck from "bottleneck";
 import searchRouter from "./routers/search.router";
+import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const app = express();
 app.use(
@@ -47,7 +51,12 @@ app.get("/", async (req, res) => {
 
 app.use("/", searchRouter);
 
-const port = 3000;
+app.use(express.static("public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
