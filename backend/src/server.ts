@@ -13,7 +13,7 @@ export const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173"],
   })
 );
 
@@ -51,12 +51,12 @@ app.get("/", async (req, res) => {
 
 app.use("/", searchRouter);
 
-app.use(express.static("public"));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"))
+);
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+const PORT: number = parseInt((process.env.PORT || "3000") as string, 10);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
