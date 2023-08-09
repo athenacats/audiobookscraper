@@ -11,8 +11,8 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Body />} />
-          <Route path="/:searchTerm" element={<SearchResults />} />
+          <Route path="/api" element={<Body />} />
+          <Route path="/api/:searchTerm" element={<SearchResults />} />
         </Routes>
       </>
     </BrowserRouter>

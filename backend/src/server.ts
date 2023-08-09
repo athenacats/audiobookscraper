@@ -22,7 +22,7 @@ const limiter = new Bottleneck({
   minTime: 5000,
 });
 
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   const url = "http://theaudiobookbay.cc/";
   try {
     const response = await limiter.schedule(() => axios.get(url));
@@ -49,7 +49,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.use("/", searchRouter);
+app.use("/api", searchRouter);
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 app.get("*", (req, res) =>

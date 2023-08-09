@@ -13,7 +13,7 @@ const limiter = new Bottleneck({
 });
 
 router.get(
-  "/:searchTerm",
+  "/api/:searchTerm",
   asyncHandler(async (req, res) => {
     const { searchTerm } = req.params;
     console.log(searchTerm);
